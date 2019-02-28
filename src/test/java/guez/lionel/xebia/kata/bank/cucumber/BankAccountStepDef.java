@@ -46,7 +46,7 @@ public class BankAccountStepDef {
 
     @Then("^In consulting my history, I should see (\\d) operation$")
     public void in_consulting_my_history_I_should_see_two_operation(int nbOperations) throws Exception {
-        assertThat(account.getHistory().size()).isEqualTo(nbOperations);
+        assertThat(account.getHistory().getOperations().size()).isEqualTo(nbOperations);
     }
 
     @Then("^I should have (\\d+) euros in this account$")
@@ -57,7 +57,7 @@ public class BankAccountStepDef {
     @Then("^My history should be :$")
     public void my_history_should_be(DataTable dataTable) throws Exception {
         List<Operation> operations = dataTable.asList(Operation.class);
-        assertThat(operations).isEqualTo(account.getHistory());
+        assertThat(operations).isEqualTo(account.getHistory().getOperations());
     }
 
 }

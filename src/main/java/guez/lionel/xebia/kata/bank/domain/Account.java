@@ -1,6 +1,5 @@
 package guez.lionel.xebia.kata.bank.domain;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,10 +8,10 @@ import static guez.lionel.xebia.kata.bank.domain.OperationNature.WITHDRAWAL;
 
 public class Account {
 
-    private List<Operation> history;
+    private History history;
 
     public Account() {
-        history = new ArrayList<>();
+        history = new History();
     }
 
     public void deposit(double amount) {
@@ -24,23 +23,18 @@ public class Account {
     }
 
     public double getBalance() {
-        if(history.isEmpty()){
-            return 0;
-        }
-        return history.get(history.size() - 1).getBalance();
+        return history.getLastBalance();
     }
 
     public void deposit(double amount, Date date) {
-        double newBalance = getBalance() + amount;
-        history.add(new Operation(DEPOSIT,date,amount,newBalance));
+        history.addOperation(DEPOSIT,date,amount);
     }
 
     public void withdraw(double amount, Date date) {
-        double newBalance = getBalance() - amount;
-        history.add(new Operation(WITHDRAWAL,date,amount,newBalance));
+        history.addOperation(WITHDRAWAL,date,amount);
     }
 
-    public List<Operation> getHistory() {
+    public History getHistory() {
         return history;
     }
 }

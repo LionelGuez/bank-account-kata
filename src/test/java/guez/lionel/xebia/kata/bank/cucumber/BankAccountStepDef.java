@@ -22,28 +22,26 @@ public class BankAccountStepDef {
         account = new Account();
     }
 
-    @When("^I deposit (\\d+) euros in this account$")
-    public void i_deposit_euros_in_this_account(double amount) throws Exception {
-        account.deposit(amount);
-    }
-
-    @When("^I withdraw (\\d+) euros in this account$")
-    public void i_withdraw_euros_in_this_account(double amount) throws Exception {
-        account.withdraw(amount);
-    }
-
-    @When("^I deposit (\\d+) euros in this account at the (.*)$")
+    @When("^I deposit (\\d+) euros in this account(?: at the (.*))?$")
     public void i_deposit_euros_in_this_account_the(double amount, String dateStr) throws Exception {
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
-        Date date = format.parse(dateStr);
-        account.deposit(amount,date);
+        if(dateStr == null) {
+            account.deposit(amount);
+        }else{
+            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+            Date date = format.parse(dateStr);
+            account.deposit(amount, date);
+        }
     }
 
-    @When("^I withdraw (\\d+) euros in this account at the (.*)$")
+    @When("^I withdraw (\\d+) euros in this account(?: at the (.*))?$")
     public void i_withdraw_euros_in_this_account_the(double amount, String dateStr) throws Exception {
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
-        Date date = format.parse(dateStr);
-        account.withdraw(amount,date);
+        if(dateStr == null) {
+            account.withdraw(amount);
+        }else {
+            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+            Date date = format.parse(dateStr);
+            account.withdraw(amount, date);
+        }
     }
 
     @Then("^In consulting my history, I should see (\\d) operation$")

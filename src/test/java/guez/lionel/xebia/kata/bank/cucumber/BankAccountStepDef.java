@@ -32,14 +32,14 @@ public class BankAccountStepDef {
         account.withdraw(amount);
     }
 
-    @When("^I deposit (\\d+) euros in this account the (.*)$")
+    @When("^I deposit (\\d+) euros in this account at the (.*)$")
     public void i_deposit_euros_in_this_account_the(double amount, String dateStr) throws Exception {
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
         Date date = format.parse(dateStr);
         account.deposit(amount,date);
     }
 
-    @When("^I withdraw (\\d+) euros in this account the (.*)$")
+    @When("^I withdraw (\\d+) euros in this account at the (.*)$")
     public void i_withdraw_euros_in_this_account_the(double amount, String dateStr) throws Exception {
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
         Date date = format.parse(dateStr);

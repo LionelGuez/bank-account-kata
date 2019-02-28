@@ -9,7 +9,7 @@ Feature: Very simplified version of a bank account
     Given An account created
     When I deposit 15 euros in this account
     And I deposit 15 euros in this account
-    Then I should have 10 euros in this account
+    Then I should have 30 euros in this account
 
   Scenario: As a customer, I want to create an account and make one deposit then one withdrawal
     Given An account created
@@ -21,8 +21,8 @@ Feature: Very simplified version of a bank account
     Given An account created
     When I deposit 15 euros in this account the 02/10/2019
     And I withdraw 10 euros in this account the 02/11/2019
-    Then In consulting my history, I should see two operation
+    Then In consulting my history, I should see 2 operation
     And My history should be :
-      | Operation | Date       | Amount | Balance |
-      | DEPOSIT   | 02/10/2019 |   15   |  15     |
-      | WITHDRAW  | 02/11/2019 |   10   |   5     |
+      | Nature     | Date       | Amount | Balance |
+      | DEPOSIT    | 02/10/2019 |   15   |  15     |
+      | WITHDRAWAL | 02/11/2019 |   10   |   5     |

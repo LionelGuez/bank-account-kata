@@ -1,6 +1,7 @@
 package guez.lionel.xebia.kata.bank.domain;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Operation {
 
@@ -30,5 +31,16 @@ public class Operation {
 
     public double getBalance() {
         return balance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Operation operation = (Operation) o;
+        return Double.compare(operation.amount, amount) == 0 &&
+                Double.compare(operation.balance, balance) == 0 &&
+                nature == operation.nature &&
+                Objects.equals(date, operation.date);
     }
 }

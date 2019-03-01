@@ -1,10 +1,9 @@
 package guez.lionel.xebia.kata.bank.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import static guez.lionel.xebia.kata.bank.domain.OperationNature.DEPOSIT;
-import static guez.lionel.xebia.kata.bank.domain.OperationNature.WITHDRAWAL;
+import static guez.lionel.xebia.kata.bank.domain.OperationType.DEPOSIT;
+import static guez.lionel.xebia.kata.bank.domain.OperationType.WITHDRAWAL;
 
 public class Account {
 

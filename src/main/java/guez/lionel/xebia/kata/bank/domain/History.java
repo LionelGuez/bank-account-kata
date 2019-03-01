@@ -19,8 +19,8 @@ public class History {
         return lastBalance;
     }
 
-    public void addOperation(OperationNature operationNature, Date date, double amount){
-        switch (operationNature){
+    public void addOperation(OperationType operationType, Date date, double amount){
+        switch (operationType){
             case DEPOSIT:
                 lastBalance += amount;
                 break;
@@ -28,7 +28,7 @@ public class History {
                 lastBalance -= amount;
                 break;
         }
-        operations.add(new Operation(operationNature,date,amount,lastBalance));
+        operations.add(new Operation(operationType,date,amount,lastBalance));
     }
 
     public List<Operation> getOperations(){

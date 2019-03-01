@@ -1,5 +1,5 @@
 package guez.lionel.xebia.kata.bank.domain;
 
-public enum OperationNature {
+public enum OperationType {
     WITHDRAWAL, DEPOSIT
 }

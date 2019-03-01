@@ -7,8 +7,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
-import static guez.lionel.xebia.kata.bank.domain.OperationNature.DEPOSIT;
-import static guez.lionel.xebia.kata.bank.domain.OperationNature.WITHDRAWAL;
+import static guez.lionel.xebia.kata.bank.domain.OperationType.DEPOSIT;
+import static guez.lionel.xebia.kata.bank.domain.OperationType.WITHDRAWAL;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class AccountTest {

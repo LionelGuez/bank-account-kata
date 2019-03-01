@@ -1,5 +1,7 @@
 package guez.lionel.xebia.kata.bank.domain.account;
 
+import guez.lionel.xebia.kata.bank.domain.exception.NegativeAmountException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -25,6 +27,7 @@ public class History {
     }
 
     public void addOperation(OperationType operationType, Date date, double amount) {
+        checkAmount(amount);
         double balance = getLastBalance();
         switch (operationType) {
             case DEPOSIT:
@@ -35,6 +38,12 @@ public class History {
                 break;
         }
         operations.add(new Operation(operationType, date, amount, balance));
+    }
+
+    private void checkAmount(double amount) {
+        if(amount < 0){
+            throw new NegativeAmountException();
+        }
     }
 
     public List<Operation> getOperations() {

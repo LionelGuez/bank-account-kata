@@ -25,45 +25,50 @@ public class MiniApp {
 
     public void run() {
         Account account = loginAccount();
-        while (true) {
-            boolean leave = false;
-            out.println("Votre compte a été ouvert");
-            out.println(" Que voulez-vous faire ?");
-            out.println("   Faire un retrait : Tapez R");
-            out.println("   Faire un dépôt : Tapez D");
-            out.println("   Consulter le solde : Tapez S");
-            out.println("   Consulter l'historique : Tapez H");
-            out.println("   Vous déconnecter de votre compte : Tapez X");
-            out.println("   Pour quitter : Taper Q");
-            String order = scanner.nextLine().trim();
-            switch (order) {
-                case "R":
-                    retrieve(account);
-                    break;
-                case "D":
-                    deposit(account);
-                    break;
-                case "S":
-                    printSolde(account);
-                    break;
-                case "H":
-                    printHistory(account);
-                    break;
-                case "X":
-                    saveAccount(account);
-                    account = loginAccount();
-                    break;
-                case "Q":
-                    leave = true;
-                    break;
-                default:
-                    out.println("Ordre non reconnu");
-            }
-            if (leave) {
-                break;
+        boolean continueLoop = true;
+        while (continueLoop) {
+            try {
+                continueLoop = askAndExecuteAction(account);
+            } catch (Exception e) {
+                out.println(e.getMessage());
+                out.println();
+                out.println();
             }
         }
+    }
 
+    private boolean askAndExecuteAction(Account account) {
+        out.println(" Que voulez-vous faire ?");
+        out.println("   Faire un retrait : Tapez R");
+        out.println("   Faire un dépôt : Tapez D");
+        out.println("   Consulter le solde : Tapez S");
+        out.println("   Consulter l'historique : Tapez H");
+        out.println("   Vous déconnecter de votre compte : Tapez X");
+        out.println("   Pour quitter : Taper Q");
+        String order = scanner.nextLine().trim();
+        switch (order) {
+            case "R":
+                retrieve(account);
+                break;
+            case "D":
+                deposit(account);
+                break;
+            case "S":
+                printSolde(account);
+                break;
+            case "H":
+                printHistory(account);
+                break;
+            case "X":
+                saveAccount(account);
+                account = loginAccount();
+                break;
+            case "Q":
+                return false;
+            default:
+                out.println("Ordre non reconnu");
+        }
+        return true;
     }
 
     private void saveAccount(Account account) {
@@ -80,8 +85,9 @@ public class MiniApp {
         Account account = accountRepository.getAccountByClientId(clientId);
         if (account == null) {
             out.println("Ce compte n'existant pas, nous allons le créer");
-            return new Account(clientId);
+            account = new Account(clientId);
         }
+        out.println("Votre compte a été ouvert");
         return account;
     }
 
@@ -108,12 +114,14 @@ public class MiniApp {
     private void retrieve(Account account) {
         out.println("    Quelle somme voulez-vous retirer ?");
         double d = scanner.nextDouble();
+        scanner.nextLine();
         account.withdraw(d);
     }
 
     private void deposit(Account account) {
         out.println("    Quelle somme voulez-vous déposer ?");
         double d = scanner.nextDouble();
+        scanner.nextLine();
         account.deposit(d);
     }
 }

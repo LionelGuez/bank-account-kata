@@ -2,6 +2,7 @@ package guez.lionel.xebia.kata.bank.domain;
 
 import guez.lionel.xebia.kata.bank.domain.account.Account;
 import guez.lionel.xebia.kata.bank.domain.account.Operation;
+import guez.lionel.xebia.kata.bank.domain.exception.NegativeAmountException;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.List;
 import static guez.lionel.xebia.kata.bank.domain.account.OperationType.DEPOSIT;
 import static guez.lionel.xebia.kata.bank.domain.account.OperationType.WITHDRAWAL;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class AccountTest {
 
@@ -68,6 +70,16 @@ public class AccountTest {
         assertThat(history.get(1).getBalance()).isEqualTo(20);
 
 
+    }
+
+    @Test
+    public void should_send_an_exception_if_we_want_to_deposit_or_withdraw_negative_amount() {
+        // GIVEN
+        Account account = createSimpleAccount();
+
+        //WHEN & THEN
+        assertThatThrownBy(() -> account.deposit(-10)).isOfAnyClassIn(NegativeAmountException.class);
+        assertThatThrownBy(() -> account.withdraw(-10)).isOfAnyClassIn(NegativeAmountException.class);
     }
 
     private Date localDateToDate(LocalDate localDate) {

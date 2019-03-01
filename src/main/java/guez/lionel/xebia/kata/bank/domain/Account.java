@@ -6,6 +6,10 @@ import java.util.List;
 import static guez.lionel.xebia.kata.bank.domain.OperationType.DEPOSIT;
 import static guez.lionel.xebia.kata.bank.domain.OperationType.WITHDRAWAL;
 
+/**
+ * Entity representing an account
+ */
+
 public class Account {
 
     private History history;

@@ -22,7 +22,7 @@ public class BankAccountStepDef {
         account = new Account();
     }
 
-    @When("^I deposit (\\d+) euros in this account(?: at the (.*))?$")
+    @When("^I deposit (\\d+) euros in this account(?: on (.*))?$")
     public void i_deposit_euros_in_this_account_the(double amount, String dateStr) throws Exception {
         if(dateStr == null) {
             account.deposit(amount);
@@ -33,7 +33,7 @@ public class BankAccountStepDef {
         }
     }
 
-    @When("^I withdraw (\\d+) euros in this account(?: at the (.*))?$")
+    @When("^I withdraw (\\d+) euros in this account(?: on (.*))?$")
     public void i_withdraw_euros_in_this_account_the(double amount, String dateStr) throws Exception {
         if(dateStr == null) {
             account.withdraw(amount);
@@ -44,7 +44,7 @@ public class BankAccountStepDef {
         }
     }
 
-    @Then("^In consulting my history, I should see (\\d) operation$")
+    @Then("^By consulting my history, I should see (\\d) operation$")
     public void in_consulting_my_history_I_should_see_two_operation(int nbOperations) throws Exception {
         assertThat(account.getOperations().size()).isEqualTo(nbOperations);
     }

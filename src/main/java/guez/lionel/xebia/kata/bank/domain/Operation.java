@@ -3,6 +3,9 @@ package guez.lionel.xebia.kata.bank.domain;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Value Object representing an Operation in an account
+ */
 public class Operation {
 
     private OperationType nature;

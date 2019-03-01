@@ -19,9 +19,9 @@ Feature: Very simplified version of a bank account
 
   Scenario: As a customer, I want to make several operation and consult my history
     Given An account created
-    When I deposit 15 euros in this account at the 02/10/2019
-    And I withdraw 10 euros in this account at the 02/11/2019
-    Then In consulting my history, I should see 2 operation
+    When I deposit 15 euros in this account on 02/10/2019
+    And I withdraw 10 euros in this account on 02/11/2019
+    Then By consulting my history, I should see 2 operation
     And My history should be :
       | Nature     | Date       | Amount | Balance |
       | DEPOSIT    | 02/10/2019 |   15   |  15     |

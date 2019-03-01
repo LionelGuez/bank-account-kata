@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Entity representing the history of an account
+ */
+
 public class History {
 
     private List<Operation> operations;

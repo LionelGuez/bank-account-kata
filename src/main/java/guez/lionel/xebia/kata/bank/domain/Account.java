@@ -1,6 +1,7 @@
 package guez.lionel.xebia.kata.bank.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import static guez.lionel.xebia.kata.bank.domain.OperationType.DEPOSIT;
 import static guez.lionel.xebia.kata.bank.domain.OperationType.WITHDRAWAL;
@@ -33,7 +34,7 @@ public class Account {
         history.addOperation(WITHDRAWAL,date,amount);
     }
 
-    public History getHistory() {
-        return history;
+    public List<Operation> getOperations() {
+        return history.getOperations();
     }
 }

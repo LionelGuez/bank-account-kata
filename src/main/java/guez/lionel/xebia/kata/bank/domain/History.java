@@ -7,28 +7,30 @@ import java.util.List;
 
 public class History {
 
-    private double lastBalance;
     private List<Operation> operations;
 
     public History() {
-        this.lastBalance = 0;
         this.operations = new ArrayList<>();
     }
 
     public double getLastBalance() {
-        return lastBalance;
+        if(operations.isEmpty()){
+            return 0;
+        }
+        return operations.get(operations.size() - 1).getBalance();
     }
 
     public void addOperation(OperationType operationType, Date date, double amount){
+        double balance = getLastBalance();
         switch (operationType){
             case DEPOSIT:
-                lastBalance += amount;
+                balance += amount;
                 break;
             case WITHDRAWAL:
-                lastBalance -= amount;
+                balance -= amount;
                 break;
         }
-        operations.add(new Operation(operationType,date,amount,lastBalance));
+        operations.add(new Operation(operationType,date,amount,balance));
     }
 
     public List<Operation> getOperations(){

@@ -50,7 +50,7 @@ public class AccountTest {
         account.withdraw(10, secondOperationDate);
 
         // Then
-        List<Operation> history = account.getHistory().getOperations();
+        List<Operation> history = account.getOperations();
         assertThat(history.get(0).getNature()).isEqualTo(DEPOSIT);
         assertThat(history.get(0).getDate()).isEqualTo(firstOperationDate);
         assertThat(history.get(0).getAmount()).isEqualTo(30);

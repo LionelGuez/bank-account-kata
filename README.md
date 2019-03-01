@@ -24,7 +24,12 @@ Think of your personal bank account experience When in doubt, go for the simples
 
 # Architecture
 
-This is a minimalistic implementation.
+This is a minimalist implementation.
 - The domain objects are in the package **guez.lionel.xebia.kata.bank.domain**
 - There is a toy application that illustrate the kata in the package **guez.lionel.xebia.kata.bank.example**
 - There is two kinds of tests : unit tests and behavior tests (via Cucumber/Gherkin)
+
+# Launch project
+- To compile, package, download dependencies, run the tests, install the project : **_mvn clean install_**
+- To run tests only : **_mvn test_**
+- To execute the 'toy' application : **_mvn exec:java_**

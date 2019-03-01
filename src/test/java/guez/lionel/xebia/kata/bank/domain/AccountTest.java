@@ -1,5 +1,7 @@
 package guez.lionel.xebia.kata.bank.domain;
 
+import guez.lionel.xebia.kata.bank.domain.account.Account;
+import guez.lionel.xebia.kata.bank.domain.account.Operation;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -7,16 +9,20 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
-import static guez.lionel.xebia.kata.bank.domain.OperationType.DEPOSIT;
-import static guez.lionel.xebia.kata.bank.domain.OperationType.WITHDRAWAL;
+import static guez.lionel.xebia.kata.bank.domain.account.OperationType.DEPOSIT;
+import static guez.lionel.xebia.kata.bank.domain.account.OperationType.WITHDRAWAL;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class AccountTest {
 
+    private Account createSimpleAccount(){
+        return new Account("someId");
+    }
+
     @Test
     public void a_deposit_should_increase_the_balance_of_the_account() {
         // GIVEN
-        Account account = new Account();
+        Account account = createSimpleAccount();
 
         // WHEN
         account.deposit(30);
@@ -28,7 +34,7 @@ public class AccountTest {
     @Test
     public void a_withdrawal_should_decrease_the_balance_of_the_account() {
         // GIVEN
-        Account account = new Account();
+        Account account = createSimpleAccount();
         account.deposit(30);
 
         // WHEN
@@ -41,7 +47,7 @@ public class AccountTest {
     @Test
     public void should_return_history_of_the_operations(){
         // GIVEN
-        Account account = new Account();
+        Account account = createSimpleAccount();
         Date firstOperationDate = localDateToDate(LocalDate.of(2019, 02, 10));
         Date secondOperationDate = localDateToDate(LocalDate.of(2019, 02, 11));
 

@@ -1,10 +1,10 @@
-package guez.lionel.xebia.kata.bank.domain;
+package guez.lionel.xebia.kata.bank.domain.account;
 
 import java.util.Date;
 import java.util.List;
 
-import static guez.lionel.xebia.kata.bank.domain.OperationType.DEPOSIT;
-import static guez.lionel.xebia.kata.bank.domain.OperationType.WITHDRAWAL;
+import static guez.lionel.xebia.kata.bank.domain.account.OperationType.DEPOSIT;
+import static guez.lionel.xebia.kata.bank.domain.account.OperationType.WITHDRAWAL;
 
 /**
  * Entity representing an account
@@ -13,8 +13,10 @@ import static guez.lionel.xebia.kata.bank.domain.OperationType.WITHDRAWAL;
 public class Account {
 
     private History history;
+    private String clientId;
 
-    public Account() {
+    public Account(String clientId) {
+        this.clientId = clientId;
         history = new History();
     }
 
@@ -40,5 +42,9 @@ public class Account {
 
     public List<Operation> getOperations() {
         return history.getOperations();
+    }
+
+    public String getClientId(){
+        return clientId;
     }
 }

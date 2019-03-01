@@ -4,8 +4,8 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import guez.lionel.xebia.kata.bank.domain.Account;
-import guez.lionel.xebia.kata.bank.domain.Operation;
+import guez.lionel.xebia.kata.bank.domain.account.Account;
+import guez.lionel.xebia.kata.bank.domain.account.Operation;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,7 +19,7 @@ public class BankAccountStepDef {
 
     @Given("^An account created$")
     public void an_account_created() throws Exception {
-        account = new Account();
+        account = new Account("someId");
     }
 
     @When("^I deposit (\\d+) euros in this account(?: on (.*))?$")
@@ -44,7 +44,7 @@ public class BankAccountStepDef {
         }
     }
 
-    @Then("^By consulting my history, I should see (\\d) operation$")
+    @Then("^By consulting my history, I should see (\\d+) operation$")
     public void in_consulting_my_history_I_should_see_two_operation(int nbOperations) throws Exception {
         assertThat(account.getOperations().size()).isEqualTo(nbOperations);
     }

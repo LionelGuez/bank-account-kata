@@ -1,4 +1,4 @@
-package guez.lionel.xebia.kata.bank.domain;
+package guez.lionel.xebia.kata.bank.domain.account;
 
 import java.util.Date;
 import java.util.Objects;

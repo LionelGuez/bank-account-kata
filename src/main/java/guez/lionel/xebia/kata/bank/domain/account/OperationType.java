@@ -1,4 +1,4 @@
-package guez.lionel.xebia.kata.bank.domain;
+package guez.lionel.xebia.kata.bank.domain.account;
 
 /**
  * Type of operation

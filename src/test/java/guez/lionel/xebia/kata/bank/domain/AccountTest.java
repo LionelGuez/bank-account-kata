@@ -15,7 +15,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class AccountTest {
 
-    private Account createSimpleAccount(){
+    private Account createSimpleAccount() {
         return new Account("someId");
     }
 
@@ -45,7 +45,7 @@ public class AccountTest {
     }
 
     @Test
-    public void should_return_history_of_the_operations(){
+    public void should_return_history_of_the_operations() {
         // GIVEN
         Account account = createSimpleAccount();
         Date firstOperationDate = localDateToDate(LocalDate.of(2019, 02, 10));
@@ -70,7 +70,7 @@ public class AccountTest {
 
     }
 
-    private Date localDateToDate(LocalDate localDate){
+    private Date localDateToDate(LocalDate localDate) {
         return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

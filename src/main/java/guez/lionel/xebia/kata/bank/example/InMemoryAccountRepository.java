@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class InMemoryAccountRepository implements AccountRepository {
 
-    Map<String,Account> accountByClientId;
+    Map<String, Account> accountByClientId;
 
     public InMemoryAccountRepository() {
         accountByClientId = new HashMap<>();
@@ -21,6 +21,6 @@ public class InMemoryAccountRepository implements AccountRepository {
 
     @Override
     public void saveAccount(Account account) {
-        accountByClientId.put(account.getClientId(),account);
+        accountByClientId.put(account.getClientId(), account);
     }
 }

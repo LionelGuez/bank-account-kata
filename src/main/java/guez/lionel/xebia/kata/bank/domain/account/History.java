@@ -18,15 +18,15 @@ public class History {
     }
 
     public double getLastBalance() {
-        if(operations.isEmpty()){
+        if (operations.isEmpty()) {
             return 0;
         }
         return operations.get(operations.size() - 1).getBalance();
     }
 
-    public void addOperation(OperationType operationType, Date date, double amount){
+    public void addOperation(OperationType operationType, Date date, double amount) {
         double balance = getLastBalance();
-        switch (operationType){
+        switch (operationType) {
             case DEPOSIT:
                 balance += amount;
                 break;
@@ -34,10 +34,10 @@ public class History {
                 balance -= amount;
                 break;
         }
-        operations.add(new Operation(operationType,date,amount,balance));
+        operations.add(new Operation(operationType, date, amount, balance));
     }
 
-    public List<Operation> getOperations(){
+    public List<Operation> getOperations() {
         return Collections.unmodifiableList(operations);
     }
 

@@ -24,9 +24,9 @@ public class BankAccountStepDef {
 
     @When("^I deposit (\\d+) euros in this account(?: on (.*))?$")
     public void i_deposit_euros_in_this_account_the(double amount, String dateStr) throws Exception {
-        if(dateStr == null) {
+        if (dateStr == null) {
             account.deposit(amount);
-        }else{
+        } else {
             SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
             Date date = format.parse(dateStr);
             account.deposit(amount, date);
@@ -35,9 +35,9 @@ public class BankAccountStepDef {
 
     @When("^I withdraw (\\d+) euros in this account(?: on (.*))?$")
     public void i_withdraw_euros_in_this_account_the(double amount, String dateStr) throws Exception {
-        if(dateStr == null) {
+        if (dateStr == null) {
             account.withdraw(amount);
-        }else {
+        } else {
             SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
             Date date = format.parse(dateStr);
             account.withdraw(amount, date);

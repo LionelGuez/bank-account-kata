@@ -78,7 +78,7 @@ public class MiniApp {
         out.println("Quel est l'id de votre compte ?");
         String clientId = scanner.nextLine();
         Account account = accountRepository.getAccountByClientId(clientId);
-        if(account == null){
+        if (account == null) {
             out.println("Ce compte n'existant pas, nous allons le créer");
             return new Account(clientId);
         }

@@ -21,11 +21,11 @@ public class Account {
     }
 
     public void deposit(double amount) {
-        deposit(amount,new Date());
+        deposit(amount, new Date());
     }
 
     public void withdraw(double amount) {
-        withdraw(amount,new Date());
+        withdraw(amount, new Date());
     }
 
     public double getBalance() {
@@ -33,18 +33,18 @@ public class Account {
     }
 
     public void deposit(double amount, Date date) {
-        history.addOperation(DEPOSIT,date,amount);
+        history.addOperation(DEPOSIT, date, amount);
     }
 
     public void withdraw(double amount, Date date) {
-        history.addOperation(WITHDRAWAL,date,amount);
+        history.addOperation(WITHDRAWAL, date, amount);
     }
 
     public List<Operation> getOperations() {
         return history.getOperations();
     }
 
-    public String getClientId(){
+    public String getClientId() {
         return clientId;
     }
 }

@@ -61,17 +61,17 @@ public class MiniApp {
     }
 
     private void printHistory(Account account) {
-        out.println("| Nature     | Date       | Amount | Balance     |");
+        out.println("| Type | Date | Amount | Balance |");
         for (Operation operation : account.getOperations()) {
-            out.print("|");
+            out.print(" | ");
             out.print(operation.getNature().toString());
-            out.print("|");
+            out.print(" | ");
             out.print(operation.getDate());
-            out.print("|");
+            out.print(" | ");
             out.print(operation.getAmount());
-            out.print("|");
+            out.print(" | ");
             out.print(operation.getBalance());
-            out.println("|");
+            out.println(" | ");
         }
         out.println();
     }
